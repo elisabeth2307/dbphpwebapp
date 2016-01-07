@@ -89,4 +89,16 @@ class AlcoholDAO {
 		}
 	}
 	
+		public function delete($alcoholname) {
+		$stmt = $this->connection->prepare ( "DELETE FROM alcohol WHERE alcoholname = ?;" );
+		$stmt->bind_param ( 's', $alcoholname );
+		
+		if ($stmt->execute ()) {
+			echo "Delete complete";
+			return 1;
+		} else {
+			echo "alcohol-Delete-ERROR: " . $stmt . "<br>" . mysqli_error ( $this->connection );
+			return -1;
+		}
+	}
 }

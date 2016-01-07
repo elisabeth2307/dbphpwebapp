@@ -1,10 +1,7 @@
 <?php
-// we are now in presentation layer
-// we will include business layer to load business logic
-include("business.php");
-
-// init City Model from Business Logic
-$alcohol = new Alcohol();
+// PRESENTATION LAYER
+include("business.php"); // get business logic
+$alcohol = new Alcohol(); // get alcohol model
 
 // insert new alcohol if post data exists
 if(isset($_POST["alcoholname"]) && $_POST["alcoholname"]){
@@ -28,6 +25,8 @@ function getHTMLTable($tabledata) {
     $html .= '<td>' . $alcohol['alcoholname'] . '</td>';
 	$html .= '<td>' . $alcohol['levelname'] . '</td>';
 	$html .= '<td><img src="img/'.$alcohol['l_id'] .'.'. $alcohol['imgtype'] . '" height="100"></td>';
+	//$html .= '<td> <button type="button" formaction="content/input.php">Delete</button> </td>';
+	$html .= '<td><form method=POST action=content/delete.php><input name="delete" type="submit" value="Delete" /></form></td>';
     $html .= '</tr></tbody>';
   }
 
@@ -42,14 +41,14 @@ function getHTMLTable($tabledata) {
 <html>
 	<head>
 		<title>Alcohol</title>
+		<link rel="stylesheet" href="css/style.css">
 	</head>
 	
 	<body>
-		<h1>hallo</h1>
-		<a href="index.php">startseite</a>
-		<a href="content/input.php">Insert an entry</a>
+		<h1>Welcome to H&H's super important and super fancy webapp!</h1>
+		<div><a href="content/input.php">Insert an entry</a></div></br></br>
 		
-		<?php echo getHTMLTable($data); ?><br />
+		<?php echo getHTMLTable($data); ?>
 	</body>
 	
 </html>

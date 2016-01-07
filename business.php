@@ -19,5 +19,10 @@ class Alcohol {
 		$data = $this->alcoholDAO->create($alcoholname, $level);
 		return $data;
 	}
+	
+	public function deleteAlcohol($alcoholname){
+		echo "IN DELETE";
+		$data = $this->alcoholDAO->delete($alcoholname);
+	}
 
 }
