@@ -15,8 +15,8 @@ class Alcohol {
 		$data = $this->alcoholDAO->readAll();
 		return $data;
 	}
-	public function createAlcohol($alcoholname) {
-		$data = $this->alcoholDAO->create($alcoholname);
+	public function createAlcohol($alcoholname, $level) {
+		$data = $this->alcoholDAO->create($alcoholname, $level);
 		return $data;
 	}
 

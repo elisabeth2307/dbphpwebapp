@@ -20,9 +20,9 @@ class AlcoholDAO {
 	/*
 	 * Create new Alcohol with alcoholname
 	 */
-	public function create($alcoholname) {
-		$stmt = $this->connection->prepare( "INSERT INTO alcohol (alcoholname) VALUES (?);" );
-		$stmt->bind_param( 's', $alcoholname );
+	public function create($alcoholname, $level) {
+		$stmt = $this->connection->prepare( "INSERT INTO alcohol (alcoholname, fk_level) VALUES (?, ?);" );
+		$stmt->bind_param( 'si', $alcoholname, $level );
 		if ($stmt->execute()) {
 			echo "Insert complete";
 			return 1;
@@ -36,7 +36,7 @@ class AlcoholDAO {
 	 * Get all informations of Alcohol by its name
 	 */
 	public function read($alcoholname) {
-		$stmt = $this->connection->prepare( "SELECT * FROM alcohol WHERE alcoholname = ?;" );
+		$stmt = $this->connection->prepare( "SELECT * FROM alcohol WHERE alcoholname = ? INNER JOIN level ON fk_level = l_id;" );
 		$stmt->bind_param( 's', $alcoholname );
 		
 		if ($stmt->execute ()) {
@@ -55,7 +55,7 @@ class AlcoholDAO {
 	 * Get all alcohol in the Database
 	 */
 	public function readAll() {
-		$select = "SELECT * FROM alcohol;";
+		$select = "SELECT * FROM alcohol INNER JOIN level ON fk_level = l_id;";
 		if ($this->connection == null) {
 			echo "Connection not initialized!";
 		} else if ($result = mysqli_query ( $this->connection, $select )) {
