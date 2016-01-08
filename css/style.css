@@ -3,16 +3,65 @@ table, th, td {
 	border-collapse: collapse;
 	margin-left:auto;
 	margin-right:auto;
-	width: 1000px;
+	width: 900px;
 	text-align: center;
-	font-size: 15pt
+	font-size: 12pt
 }
 
 h1 {
 	text-align: center;
+	font-size: 22pt;
+}
+
+p {
+	text-align: center;
+	font-size: 8pt;
+	font-weight: bold;
+	margin-bottom: 0;
+	padding-bottom: 0;
 }
 
 div {
 	text-align: center
 }
+
+img {
+	display: block;
+    	margin-left: auto;
+    	margin-right: auto;
+	float: center;
+}
 	
+.banner {
+	width: 900px;
+}
+
+#wrapper {
+	width:900px;
+	margin: 0 auto;
+	background-color: #D3D3D3;
+}
+
+body {
+	margin-top: 0;
+	margin-bottom: 0;
+	padding-bottom: 0;
+	font-family: Arial, 'Lucida Sans Unicode', sans-serif;
+}
+
+a:link {
+	color:black;
+}
+
+a:visited {
+	color:grey;
+}
+
+a:hover {
+	color:black;
+}
+
+.text {
+	font-size: 16pt;
+	margin-bottom: 10px;
+}
