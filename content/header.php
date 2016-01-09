@@ -1,3 +1,4 @@
+<!-- header of php/html-sites -->
 <html>
 	<head>
 		<title>Alcohol</title>

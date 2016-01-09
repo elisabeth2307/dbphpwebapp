@@ -1,3 +1,7 @@
+<!-- Responsible for the delete-site for deleting existing types of alcohol -->
+<!-- No html-formatting because user doesn't see this site because it 
+	switches back to index.php very fast -->
+
 <?php
 	include("business/business.php"); // get business logic
 

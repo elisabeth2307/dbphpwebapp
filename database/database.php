@@ -1,7 +1,9 @@
+<!-- Responsible for dealing with database (use prepared statements for avoiding SQL Injections)-->
+
 <?php
 	include_once "db_connection.php"; // get database-connection -> just once !
 
-	// Data Access Object for Alcohol
+	// Class Data Access Object for Alcohol
 	class AlcoholDAO {
 		private $connection = null;
 	
@@ -10,6 +12,7 @@
 			$db = new DB();
 			$this->connection = $db->connect();
 		
+			// if connecting was not successful
 			if(! $this->connection) {
 				die( 'ERROR while connecting' );
 			}
@@ -51,7 +54,6 @@
 				}
 				return $row;
 			} else {
-				echo "0 results";
 				return - 1;
 			}
 		}
@@ -60,19 +62,24 @@
 		* Get all types of alcohol from the Database
 		*/
 		public function readAll() {
+			// prepare select-command
 			$select = "SELECT * FROM alcohol INNER JOIN level ON fk_level = l_id;";
+			
+			// if connection is not initialized 
 			if ($this->connection == null) {
 				echo "Connection not initialized!";
-			} else if ($result = mysqli_query ( $this->connection, $select )) {
+			} // if connection is initialized send select command
+			else if ($result = mysqli_query ( $this->connection, $select )) {
 				$items = null;
+				// if there are types of alcohol sent back from the database
 				if (mysqli_num_rows ( $result ) > 0) {
 					while ( $row = mysqli_fetch_assoc ( $result ) ) {
+						// store types of alcohol in array
 						$items [] = $row;
 					}
+					// return the alc-array
 					return $items;
-				} else {
-					echo "</br>0 results";
-				}
+				} 
 			} else {
 				echo "Resultset leer/nicht definiert!";
 			}
@@ -98,7 +105,7 @@
 		}
 		
 		/*
-		* Delete a type of alcohol
+		* Delete a type of alcohol via alcoholname (pk)
 		*/
 		public function delete($alcoholname) {
 			// prepare statement
