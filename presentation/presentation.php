@@ -23,6 +23,7 @@
 		$html .= '<th>Type of Alcohol</th>';
 		$html .= '<th>Description</th>';
 		$html .= '<th>Image</th>';
+		$html .= '<th>Options</th>';
 		$html .= '</tr></thead>';
 
 		foreach($tabledata as $alcohol) {
