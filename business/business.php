@@ -36,6 +36,8 @@
 		}
 		// Filter name-input -> just numbers and letters are allowed
 		public function filterInput($stringToFilter) {
+			if ($stringToFilter == "") 
+				return "sorry, someone didn't bother to type in a new name";
 			return preg_replace("/[^A-Za-z0-9 ]/", '', $stringToFilter);
 		}
 		// Filter level-input -> just numbers from 1 to 5 allowed
