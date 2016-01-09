@@ -38,7 +38,7 @@
 		}
 	
 		/*
-		* Get alcohol via name (which is the primary key)
+		* Get alcohol by name (which is the primary key)
 		*/
 		public function read($alcoholname) {
 			// prepare statement
@@ -105,7 +105,7 @@
 		}
 		
 		/*
-		* Delete a type of alcohol via alcoholname (pk)
+		* Delete a type of alcohol by name (pk)
 		*/
 		public function delete($alcoholname) {
 			// prepare statement
