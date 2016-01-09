@@ -20,6 +20,7 @@
 		// CREATE
 		public function createAlcohol($alcoholname, $level) {
 			$alcoholname = $this->filterInput($alcoholname);
+			$level = $this->filterLevel($level);
 			$data = $this->alcoholDAO->create($alcoholname, $level);
 			return $data;
 		}
@@ -30,11 +31,30 @@
 		// UPDATE
 		public function updateAlcohol($id, $alcoholname, $level){
 			$alcoholname = $this->filterInput($alcoholname);
+			$level = $this->filterLevel($level);
 			$data = $this->alcoholDAO->update($id, $alcoholname, $level);
 		}
-		// Filter input -> just numbers and letters are allowed
+		// Filter name-input -> just numbers and letters are allowed
 		public function filterInput($stringToFilter) {
 			return preg_replace("/[^A-Za-z0-9 ]/", '', $stringToFilter);
+		}
+		// Filter level-input -> just numbers from 1 to 5 allowed
+		public function filterLevel($levelToFilter) {
+			$result = $levelToFilter;
+			
+			// not numeric
+			if (!is_numeric($result)) {
+				$result = 1;
+			}
+			// too high
+			if ($result > 5) {
+				$result = 5;
+			}
+			// too low
+			if ($result < 1) {
+				$result = 1;
+			}
+			return $result;
 		}
 	}
 ?>

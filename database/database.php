@@ -31,8 +31,7 @@
 			if ($stmt->execute()) {
 				return 1;
 			} else {
-				echo "Alcohol-Create-ERROR: " . $insert . "<br>" . mysqli_error ( $this->connection );
-				echo "Please contact H&H";
+				echo "<p class = \"text\">The type of alcohol \"" . $alcoholname . "\" is already inserted.</p>";
 				return - 1;
 			}
 		}
